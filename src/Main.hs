@@ -1,5 +1,7 @@
 module Main where
+import System.Environment (getArgs)
 import Problem0026
 
 main = do
-  putStrLn $ show $ divisors 1
+  (n:[]) <- getArgs
+  putStrLn $ show $ primeDivisors (read n :: Integer)
