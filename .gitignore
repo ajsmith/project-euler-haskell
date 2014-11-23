@@ -1,0 +1,9 @@
+# GHC artifacts
+*.hi
+*.o
+
+# Cabal artifacts
+dist/
+
+# Emacs backup files
+*~
