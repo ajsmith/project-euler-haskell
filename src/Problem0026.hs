@@ -1,4 +1,5 @@
 module Problem0026 where
+import Data.Number.BigFloat
 
 divisors :: Integer -> [Integer]
 divisors n
@@ -31,32 +32,32 @@ findLongestCycle = findLongestCycle' reciprocalCycles
       then (d1, x1)
       else (d2, x2)
 
-reciprocalCycles = [(x, (1 / fromIntegral x)) | x<-[2..1000], x `gcd` 10 == 1]
+reciprocalCycles = [(x, (1 / fromIntegral x):: BigFloat Prec50) | x<-[2..1000], x `gcd` 10 == 1]
 
-cycle :: (RealFrac a, Integral b) => a -> b
+-- cycle :: (RealFrac a, Integral b) => a -> b
 cycle x = round (x * 10^p - x)
   where
     p = cycleLength x
 
-cycleLength :: (RealFrac a, Integral b) => a -> b
+-- cycleLength :: (RealFrac a, Integral b) => a -> b
 cycleLength x = cycleLength' x 1
   where
-    cycleLength' :: (RealFrac a, Integral b) => a -> b -> b
+    -- cycleLength' :: (RealFrac a, Integral b) => a -> b -> b
     cycleLength' x p =
       if checkCycle x p
       then p
       else cycleLength' x (p + 1)
 
-checkCycle :: (RealFrac a, Integral b) => a -> b -> Bool
+-- checkCycle :: (RealFrac a, Integral b) => a -> b -> Bool
 checkCycle x p = checkError y
   where
     y = x * 10^p - x
 
-checkError :: RealFrac a => a -> Bool
+-- checkError :: RealFrac a => a -> Bool
 checkError x = errorMargin x < errorTolerance
 
-errorMargin :: RealFrac a => a -> a
+-- errorMargin :: RealFrac a => a -> a
 errorMargin x = abs (fromIntegral (round x) - x)
 
-errorTolerance :: Fractional a => a
-errorTolerance = 1 / 10^10
+-- errorTolerance :: RealFrac a => a
+errorTolerance = (1 / 10^45) :: BigFloat Prec50
