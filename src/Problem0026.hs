@@ -32,7 +32,9 @@ findLongestCycle = findLongestCycle' reciprocalCycles
       then (d1, x1)
       else (d2, x2)
 
-reciprocalCycles = [(x, (1 / fromIntegral x):: BigFloat Prec50) | x<-[2..1000], x `gcd` 10 == 1]
+preciseFloat x = fromIntegral x :: BigFloat (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 Prec50))))
+
+reciprocalCycles = [(x, ((preciseFloat 1) / (fromIntegral x))) | x<-[2..1000], x `gcd` 10 == 1]
 
 -- cycle :: (RealFrac a, Integral b) => a -> b
 cycle x = round (x * 10^p - x)
@@ -60,4 +62,4 @@ checkError x = errorMargin x < errorTolerance
 errorMargin x = abs (fromIntegral (round x) - x)
 
 -- errorTolerance :: RealFrac a => a
-errorTolerance = (1 / 10^45) :: BigFloat Prec50
+errorTolerance = (preciseFloat 1) / 10^100
