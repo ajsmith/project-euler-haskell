@@ -1,6 +1,6 @@
 module Main where
 import System.Environment (getArgs)
-import Problem0026
+import Problem26
 
 main = do
   args <- getArgs

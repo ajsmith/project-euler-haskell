@@ -1,4 +1,4 @@
-module Problem0026 where
+module Problem26 where
 import Data.Number.BigFloat
 
 -- There's probably a better way of doing this, but I'm bad at Haskell :/
