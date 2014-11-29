@@ -1,6 +1,30 @@
 module Problem0026 where
 import Data.Number.BigFloat
 
+-- There's probably a better way of doing this, but I'm bad at Haskell :/
+preciseFloat x = fromIntegral x :: BigFloat (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 Prec50 ))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+
+errorTolerance = (preciseFloat 1) / 10^1950
+
+reciprocalCycles = [x | x<-[2..1000], x `gcd` 10 == 1]
+
+check x n =
+  if (abs ds) < errorTolerance
+  then n
+  else check x (n + 1)
+  where
+    y = preciseFloat x
+    (z, ds) = properFraction (10^n / y - 1 / y)
+
+findLongestCycle = (x, n, (one / (fromIntegral x)))
+  where
+    (x, n) = foldr1 maxCycle [(x, check x 1) | x<-reciprocalCycles]
+    one = preciseFloat 1
+    maxCycle (x1, n1) (x2, n2) =
+      if n1 > n2
+      then (x1, n1)
+      else (x2, n2)
+
 divisors :: Integer -> [Integer]
 divisors n
   | n == 1 = [1]
@@ -15,51 +39,3 @@ isPrime 1 = False
 isPrime n = divisors n == [1]
 
 primeDivisors n = filter isPrime (divisors n)
-
-digitCount :: Integer -> Int
-digitCount = length . show
-
-digits n =
-  if n > 9
-  then (digits (n `div` 10)) ++ [n `mod` 10]
-  else [n]
-
-findLongestCycle = findLongestCycle' reciprocalCycles
-  where
-    findLongestCycle' pairs = foldl1 maxCycle pairs
-    maxCycle (d1, x1) (d2, x2) =
-      if cycleLength x1 > cycleLength x2
-      then (d1, x1)
-      else (d2, x2)
-
-preciseFloat x = fromIntegral x :: BigFloat (PrecPlus20 (PrecPlus20 (PrecPlus20 (PrecPlus20 Prec50))))
-
-reciprocalCycles = [(x, ((preciseFloat 1) / (fromIntegral x))) | x<-[2..1000], x `gcd` 10 == 1]
-
--- cycle :: (RealFrac a, Integral b) => a -> b
-cycle x = round (x * 10^p - x)
-  where
-    p = cycleLength x
-
--- cycleLength :: (RealFrac a, Integral b) => a -> b
-cycleLength x = cycleLength' x 1
-  where
-    -- cycleLength' :: (RealFrac a, Integral b) => a -> b -> b
-    cycleLength' x p =
-      if checkCycle x p
-      then p
-      else cycleLength' x (p + 1)
-
--- checkCycle :: (RealFrac a, Integral b) => a -> b -> Bool
-checkCycle x p = checkError y
-  where
-    y = x * 10^p - x
-
--- checkError :: RealFrac a => a -> Bool
-checkError x = errorMargin x < errorTolerance
-
--- errorMargin :: RealFrac a => a -> a
-errorMargin x = abs (fromIntegral (round x) - x)
-
--- errorTolerance :: RealFrac a => a
-errorTolerance = (preciseFloat 1) / 10^100

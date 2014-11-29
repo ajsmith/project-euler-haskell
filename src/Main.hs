@@ -5,5 +5,3 @@ import Problem0026
 main = do
   args <- getArgs
   putStrLn $ show $ findLongestCycle
-
--- putStrLn $ show $ primeDivisors (read n :: Integer)
