@@ -20,3 +20,4 @@ executable euler-solve
   hs-source-dirs: src
   -- other-modules:
   build-depends: base >= 4.6, numbers
+  GHC-options: "-fcontext-stack=100"
