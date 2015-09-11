@@ -24,3 +24,5 @@ findLongestCycle = (x, n, (one / (fromIntegral x)))
       if n1 > n2
       then (x1, n1)
       else (x2, n2)
+
+solve _ = putStrLn $ show $ findLongestCycle
