@@ -26,4 +26,4 @@ findLongestCycle = x
       then (x1, n1)
       else (x2, n2)
 
-solve _ = putStrLn $ show $ findLongestCycle
+solve _ = findLongestCycle
