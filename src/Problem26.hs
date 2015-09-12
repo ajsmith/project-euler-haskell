@@ -16,7 +16,8 @@ check x n =
     y = preciseFloat x
     (z, ds) = properFraction (10^n / y - 1 / y)
 
-findLongestCycle = (x, n, (one / (fromIntegral x)))
+-- findLongestCycle = (x, n, (one / (fromIntegral x))) -- for debugging
+findLongestCycle = x
   where
     (x, n) = foldr1 maxCycle [(x, check x 1) | x<-reciprocalCycles]
     one = preciseFloat 1
