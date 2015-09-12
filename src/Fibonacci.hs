@@ -5,5 +5,5 @@ module Fibonacci where
 fibonacci n = head $ reverse $ take n fibonacciSeries
 
 fibonacciSeries = [1, 1] ++ (generateFibonacci 1 1)
-
-generateFibonacci b a = (b + a):(generateFibonacci (b + a) b)
+  where
+    generateFibonacci b a = (b + a):(generateFibonacci (b + a) b)
