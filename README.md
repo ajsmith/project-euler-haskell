@@ -1,7 +1,8 @@
 # Project Euler Solutions
 
 This is a collection of my solutions to problems on
-[Project Euler](http://www.projecteuler.net).
+[Project Euler](http://www.projecteuler.net). My solutions are written in an
+amazing little language called Haskell.
 
 Remember that the fun in programming challenges is solving them yourself, so
 please keep that in mind before viewing these files!
