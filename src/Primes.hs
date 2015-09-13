@@ -14,3 +14,5 @@ isPrime 1 = False
 isPrime n = divisors n == [1]
 
 primeDivisors n = filter isPrime (divisors n)
+
+primes = [x | x<-[2..], isPrime x]
