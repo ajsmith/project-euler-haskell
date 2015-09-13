@@ -9,6 +9,7 @@ import qualified Problem11
 import qualified Problem15
 import qualified Problem26
 import qualified Problem37
+import qualified Problem97
 
 main = do
   args <- getArgs
@@ -25,4 +26,5 @@ main = do
     solve 15 = Problem15.solve
     solve 26 = Problem26.solve
     solve 37 = Problem37.solve
+    solve 97 = Problem97.solve
     solve _  = error "Solution not found."
