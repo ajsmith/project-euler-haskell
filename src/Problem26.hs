@@ -37,7 +37,7 @@ check x n =
   else check x (n + 1)
   where
     y = preciseFloat x
-    (z, ds) = properFraction (10^n / y - 1 / y)
+    (z, ds) = properFraction ((10^n - 1) / y)
 
 -- findLongestCycle = (x, n, (one / (fromIntegral x))) -- for debugging
 findLongestCycle = x
