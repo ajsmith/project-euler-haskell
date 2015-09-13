@@ -4,6 +4,7 @@ import qualified Problem1
 import qualified Problem2
 import qualified Problem3
 import qualified Problem4
+import qualified Problem5
 import qualified Problem11
 import qualified Problem15
 import qualified Problem26
@@ -18,6 +19,7 @@ main = do
     solve 2  = Problem2.solve
     solve 3  = Problem3.solve
     solve 4  = Problem4.solve
+    solve 5  = Problem5.solve
     solve 11 = Problem11.solve
     solve 15 = Problem15.solve
     solve 26 = Problem26.solve
