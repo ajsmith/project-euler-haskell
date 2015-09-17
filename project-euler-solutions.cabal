@@ -24,6 +24,10 @@ executable euler-solve
 
 Test-Suite test-euler-solve
   type: detailed-0.9
-  hs-source-dirs: test
+  hs-source-dirs: test, src
+  other-modules:
+    Primes
+    Problem1
+    Problem37
   test-module: TestSolvers
-  build-depends: base >= 4.6, Cabal >= 1.9.2
+  build-depends: base >= 4.6, Cabal >= 1.9.2, numbers, split
