@@ -21,3 +21,9 @@ executable euler-solve
   -- other-modules:
   build-depends: base >= 4.6, numbers, split
   GHC-options: "-fcontext-stack=100"
+
+Test-Suite test-euler-solve
+  type: detailed-0.9
+  hs-source-dirs: test
+  test-module: TestSolvers
+  build-depends: base >= 4.6, Cabal >= 1.9.2
