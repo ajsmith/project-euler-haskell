@@ -13,11 +13,6 @@ four million, find the sum of the even-valued terms.
 
 > limit = 4000000
 
-> fibSequence = fibs fibonacciSeries
->   where
->     fibs (x:xs) =
->       if x < limit
->       then x:(fibs xs)
->       else []
+> fibSequence = takeWhile (\x -> x < limit) fibonacciSeries
 
-> solve = sum [x | x <- fibSequence, x `mod` 2 == 0]
+> solve = sum [x | x <- fibSequence, even x]
