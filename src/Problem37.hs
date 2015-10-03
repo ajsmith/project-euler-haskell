@@ -13,17 +13,8 @@ NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 -}
 
 module Problem37 where
+import MathUtils (digits, joinDigits)
 import Primes
-
-digits x = digits' x []
-  where
-    digits' 0 ds = ds
-    digits' x ds = digits' (x `div` 10) ((x `mod` 10):ds)
-
-joinDigits ds = join' 0 (reverse ds)
-  where
-    join' _ [] = 0
-    join' p (d:ds) = (10^p * d) + (join' (p + 1) ds)
 
 leftTruncated x = leftTruncated' [] (digits x)
   where
