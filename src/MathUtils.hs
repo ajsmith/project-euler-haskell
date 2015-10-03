@@ -1,4 +1,4 @@
-module NumberTheory where
+module MathUtils where
 
 factorial x = foldl (*) 1 [2..x]
 
