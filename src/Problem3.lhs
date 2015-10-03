@@ -9,4 +9,4 @@ What is the largest prime factor of the number 600851475143?
 
 > x = 600851475143
 
-> solve _ = foldl max 0 (primeDivisors x)
+> solve = foldl max 0 (primeDivisors x)

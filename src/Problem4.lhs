@@ -16,4 +16,4 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 
 > palindromes = filter isPalindrome products
 
-> solve _ = foldl max 0 palindromes
+> solve = foldl max 0 palindromes

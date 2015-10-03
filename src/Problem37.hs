@@ -41,4 +41,4 @@ isRightTruncatablePrime x = (filter isPrime (rightTruncated x)) == (rightTruncat
 
 isTruncatablePrime x = isLeftTruncatablePrime x && isRightTruncatablePrime x
 
-solve _ = sum $ take 11 [x | x<-primes, x > 10 && isTruncatablePrime x]
+solve = sum $ take 11 [x | x<-primes, x > 10 && isTruncatablePrime x]

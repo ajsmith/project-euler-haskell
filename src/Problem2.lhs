@@ -20,4 +20,4 @@ four million, find the sum of the even-valued terms.
 >       then x:(fibs xs)
 >       else []
 
-> solve _ = sum [x | x <- fibSequence, x `mod` 2 == 0]
+> solve = sum [x | x <- fibSequence, x `mod` 2 == 0]

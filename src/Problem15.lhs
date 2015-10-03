@@ -8,4 +8,4 @@ How many such routes are there through a 20×20 grid?
 > module Problem15 where
 > import MathUtils (nCr)
 
-> solve _ = nCr 40 20
+> solve = nCr 40 20

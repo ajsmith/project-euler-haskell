@@ -13,4 +13,4 @@ n = 20
 
 divisibleByRangeN x = [1..n] == [y | y<-[1..n], x `mod` y == 0]
 
-solve _ = head (filter divisibleByRangeN [1..])
+solve = head (filter divisibleByRangeN [1..])

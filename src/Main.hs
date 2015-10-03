@@ -14,9 +14,9 @@ import qualified Problem97
 
 main = do
   args <- getArgs
-  solution (read (head args) :: Int) (tail args)
+  solution (read (head args) :: Int)
   where
-    solution problem args = putStrLn $ "Solution: " ++ (show $ solve problem args)
+    solution problem = putStrLn $ "Solution: " ++ (show $ solve problem)
 
     solve 1  = Problem1.solve
     solve 2  = Problem2.solve

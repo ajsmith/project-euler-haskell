@@ -8,4 +8,4 @@ Find the last ten digits of the series, 1^1 + 2^2 + 3^3 + ... + 1000^1000.
 
 module Problem48 where
 
-solve _ = (sum [x^x `mod` 10^10 | x<-[1..1000]]) `mod` 10^10
+solve = (sum [x^x `mod` 10^10 | x<-[1..1000]]) `mod` 10^10

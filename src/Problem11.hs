@@ -103,4 +103,4 @@ maxRightDiagonal = maxProduct 0 (diagonalize $ take 4 grid) (drop 1 grid)
 
     diagonalize (r1:r2:r3:r4:[]) = ((drop 3 r1):(drop 2 r2):(drop 1 r3):r4:[])
 
-solve _ = foldl max 0 [maxHorizontal, maxVertical, maxLeftDiagonal, maxRightDiagonal]
+solve = foldl max 0 [maxHorizontal, maxVertical, maxLeftDiagonal, maxRightDiagonal]
