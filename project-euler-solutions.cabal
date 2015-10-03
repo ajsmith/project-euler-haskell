@@ -28,6 +28,7 @@ Test-Suite test-euler-solve
   other-modules:
     Primes
     Problem1
+    Problem15
     Problem37
   test-module: TestSolvers
   build-depends: base >= 4.6, Cabal >= 1.9.2, numbers, split
