@@ -19,7 +19,7 @@ executable euler-solve
   main-is: Main.hs
   hs-source-dirs: src
   -- other-modules:
-  build-depends: base >= 4.6, numbers, split
+  build-depends: base >= 4.6, numbers, split, containers
   GHC-options: "-fcontext-stack=100"
 
 Test-Suite test-euler-solve
