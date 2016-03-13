@@ -7,6 +7,7 @@ import qualified Problem4
 import qualified Problem5
 import qualified Problem11
 import qualified Problem15
+import qualified Problem23
 import qualified Problem26
 import qualified Problem37
 import qualified Problem38
@@ -26,6 +27,7 @@ main = do
     solve 5  = Problem5.solve
     solve 11 = Problem11.solve
     solve 15 = Problem15.solve
+    solve 23 = Problem23.solve
     solve 26 = Problem26.solve
     solve 37 = Problem37.solve
     solve 38 = Problem38.solve
