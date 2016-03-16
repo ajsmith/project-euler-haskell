@@ -11,6 +11,11 @@ digits x = digits' x []
     digits' 0 ds = ds
     digits' x ds = digits' (x `div` 10) ((x `mod` 10):ds)
 
+digitCount x = ceiling $ (log10 (y + 1))
+  where
+    log10 x = (log  x) / (log 10)
+    y = abs $ fromIntegral x
+
 joinDigits ds = join' 0 (reverse ds)
   where
     join' _ [] = 0
