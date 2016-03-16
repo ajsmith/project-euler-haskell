@@ -19,12 +19,7 @@ concatenated product of an integer with (1,2, ... , n) where n > 1?
 -}
 
 module Problem38 where
-import qualified Data.Set as Set
-import MathUtils (digits)
-
-pandigits = Set.fromList [1..9]
-
-isPandigital x = x <= 987654321 && (Set.fromList . digits) x == pandigits
+import Pandigital (isPandigital)
 
 joinProducts xs = read (concat $ map show xs) :: Integer
 
