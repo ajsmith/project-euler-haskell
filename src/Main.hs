@@ -11,6 +11,7 @@ import qualified Problem23
 import qualified Problem26
 import qualified Problem37
 import qualified Problem38
+import qualified Problem41
 import qualified Problem48
 import qualified Problem97
 
@@ -31,6 +32,7 @@ main = do
     solve 26 = Problem26.solve
     solve 37 = Problem37.solve
     solve 38 = Problem38.solve
+    solve 41 = Problem41.solve
     solve 48 = Problem48.solve
     solve 97 = Problem97.solve
     solve _  = error "Solution not found."

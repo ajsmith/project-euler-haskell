@@ -1,15 +1,15 @@
 {- Pandigital Numbers
 
-A pandigital number is a number which contains the digits 1-9 exactly once.
+A n-digit pandigital number is a number which contains the digits 1-n exactly once.
 -}
 
 module Pandigital where
-import qualified Data.Set as Set
+import Data.List (sort)
 import MathUtils (digits)
 
-pandigits = Set.fromList [1..9]
-
-isPandigital x =
-  x >= 123456789 &&
-  x <= 987654321 &&
-  (Set.fromList . digits) x == pandigits
+isPandigital x = isPandigital' n x
+  where
+    isPandigital' n x = (sort . digits) x == [1..n]
+    log10 x = (log  x) / (log 10)
+    y = fromIntegral x
+    n = ceiling $ (log10 (y + 1))
