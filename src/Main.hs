@@ -12,6 +12,7 @@ import qualified Problem26
 import qualified Problem35
 import qualified Problem37
 import qualified Problem38
+import qualified Problem40
 import qualified Problem41
 import qualified Problem48
 import qualified Problem92
@@ -35,6 +36,7 @@ main = do
     solve 35 = Problem35.solve
     solve 37 = Problem37.solve
     solve 38 = Problem38.solve
+    solve 40 = Problem40.solve
     solve 41 = Problem41.solve
     solve 48 = Problem48.solve
     solve 92 = Problem92.solve
