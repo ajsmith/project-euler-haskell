@@ -72,11 +72,8 @@ tokenize = words . replaceCommas
 
 replaceCommas cs = replaceCommas' cs []
   where
-    replaceCommas' [] result = toString result
+    replaceCommas' [] result = result
     replaceCommas' (c:cs) result =
       if c == ','
       then ' ':(replaceCommas' cs result)
       else c:(replaceCommas' cs result)
-
-toString :: [Char] -> String
-toString cs = cs :: String
