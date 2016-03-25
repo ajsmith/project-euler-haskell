@@ -3,7 +3,7 @@ module Primes where
 divisors :: Integer -> [Integer]
 divisors n
   | n == 1 = [1]
-  | n > 0 = 1:(xs ++ ys)
+  | n > 0 = 1:(xs ++ ys ++ [n])
   | otherwise = error "Value must be greater than zero."
   where
     isqrt = floor . sqrt . fromIntegral
@@ -11,7 +11,7 @@ divisors n
     ys = [n `div` x | x<-xs, x /= n `div` x]
 
 isPrime 1 = False
-isPrime n = divisors n == [1]
+isPrime n = divisors n == [1, n]
 
 primeDivisors n = filter isPrime (divisors n)
 
