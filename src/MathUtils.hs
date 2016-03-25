@@ -20,3 +20,7 @@ joinDigits ds = join' 0 (reverse ds)
   where
     join' _ [] = 0
     join' p (d:ds) = (10^p * d) + (join' (p + 1) ds)
+
+reverseInteger x = (read . reverse . show) x :: Integer
+
+isPalindrome x = show x == (reverse . show) x
