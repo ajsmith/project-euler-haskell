@@ -38,7 +38,7 @@ maxTriangles ts1 ts2 =
   then ts1
   else ts2
 
-mostTriangles = foldr1 maxTriangles [triplesForPerimeter p | p<-[1..1000]]
+mostTriangles = foldr1 maxTriangles [triplesForPerimeter p | p<-[12,14..1000]]
 
 solve = sum $ head mostTriangles
 
