@@ -10,8 +10,6 @@ For which value of p ≤ 1000, is the number of solutions maximised?
 -}
 
 module Problem39 where
-import Data.List (groupBy, nubBy)
-import Data.Set (empty, insert, toAscList)
 import PythagoreanTriples (triplesForPerimeter)
 
 maxTriangles ts1 ts2 =
