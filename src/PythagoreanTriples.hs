@@ -13,11 +13,19 @@ triple m n =
 
 triplesForPerimeter p = [scale t | t<-primitives]
   where
-    fits sides = sum sides <= p
-    similar p t = lcm (sum t) p == p
-    primitives = filter (similar p) $ takeWhile fits primitiveTriples
     scale t = map (*(p `div` (sum t))) t
+    primitives = [triple m n | m<-[1..(p `div` 2)], n<-(ns m), lcm p (2 * m * (m + n)) == p]
+    ns m = [n | n<-[1..(m - 1)], odd (m - n), gcd m n == 1]
+
+-- primitivesTo :: Integral a => a -> [[a]]
+primitivesTo p = [triple m n | m<-[2..maxM], n<-(ns m), p >= 2 * m * (m + n)]
+  where
+    maxM = (ceiling . sqrt) ((fromIntegral p) / 2)
+    ns m =
+      if odd m
+      then [n | n<-[2,4..(m - 1)], gcd m n == 1]
+      else [n | n<-[1,3..(m - 1)], gcd m n == 1]
 
 primitiveTriples = [triple m n | m<-[1..], n<-(ns m)]
   where
-    ns m = [n | n<-[1..(m -1)], odd (m - n), gcd m n == 1]
+    ns m = [n | n<-[1..(m - 1)], odd (m - n), gcd m n == 1]
