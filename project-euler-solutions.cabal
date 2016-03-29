@@ -19,8 +19,11 @@ executable euler-solve
   main-is: Main.hs
   hs-source-dirs: src
   -- other-modules:
-  build-depends: base >= 4.6, numbers, split, containers
-  GHC-options: "-fcontext-stack=100"
+  build-depends: base >= 4.6, numbers, split, containers, parallel
+  GHC-options: -O -fcontext-stack=100
+  -- GHC-options: -O -fcontext-stack=100 -threaded "-with-rtsopts=-N"
+  --  -fprof-auto "-with-rtsopts=-p -h"
+  -- -threaded "-with-rtsopts=-N"
 
 Test-Suite test-euler-solve
   type: detailed-0.9
