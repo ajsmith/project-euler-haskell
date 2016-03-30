@@ -25,25 +25,21 @@ can exactly one integer sided right angle triangle be formed?
 
 module Problem75 where
 import PythagoreanTriples (primitivesTo)
-import Data.List (group, sort, sortBy)
-import Data.Set (empty, insert, toAscList)
-import Debug.Trace (trace, traceShow, traceShowId)
+import Data.List (group, sort)
 
 n = 1500000
 
-primitivePerimiters = toAscList $ foldr insert empty [sum t | t<-(primitivesTo n)]
+primitives = primitivesTo n
 
-similarTriangles'' [] _ _ = []
-similarTriangles'' (p:ps) left right =
-  (filter (isSimilar (traceShowId p)) left'):(similarTriangles'' ps left' right')
-  where
-    left' = left ++ (takeWhile lte right)
-    right' = dropWhile lte right
-    lte p2 = p2 <= p
-    isSimilar p1 p2 = lcm p1 p2 == p1
-singularTriangles = filter isSingular $ similarTriangles'' [12,14..n] [] primitivePerimiters
+scale t = takeWhile (\t -> sum t <= n) [map (*k) t | k<-[1..n]]
+
+allTriples = foldr (++) [] $ map scale primitives
+
+allPerimeters = group $ sort $ map sum allTriples
+
+singularPerimeters = filter isSingular allPerimeters
 
 isSingular (t:[]) = True
 isSingular _ = False
 
-solve = (fromIntegral . length) singularTriangles
+solve = (fromIntegral . length) singularPerimeters
