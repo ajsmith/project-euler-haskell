@@ -19,7 +19,7 @@ executable euler-solve
   main-is: Main.hs
   hs-source-dirs: src
   -- other-modules:
-  build-depends: base >= 4.6, numbers, split, containers, parallel
+  build-depends: base >= 4.7, numbers, split, containers, parallel, old-locale, time
   GHC-options: -O -fcontext-stack=100
   -- GHC-options: -O -fcontext-stack=100 -threaded "-with-rtsopts=-N"
   --  -fprof-auto "-with-rtsopts=-p -h"
@@ -35,4 +35,4 @@ Test-Suite test-euler-solve
     Problem23
     Problem37
   test-module: TestSolvers
-  build-depends: base >= 4.6, Cabal >= 1.9.2, numbers, split
+  build-depends: base >= 4.7, Cabal >= 1.9.2, numbers, split

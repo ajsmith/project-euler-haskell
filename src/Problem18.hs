@@ -84,6 +84,10 @@ linkTree (l1:l2:ls) = linkTree ((linkTreeLevel l1 l2):ls)
 
 buildTreeNode (r, a, b) = Node r [Node a [], Node b []]
 
+joinTrees' (Node r _) (Node c1 ts1) (Node c2 ts2)
+  | r == c1 && r == c2 = Node r [Node c1 ts1, Node c2 ts2]
+  | otherwise = error "Mismatched trees"
+
 joinTrees (Node r _) (Node c1 ts1) (Node c2 ts2) = Node r [Node c1 ts1, Node c2 ts2]
 
 height (Node r []) = 1
